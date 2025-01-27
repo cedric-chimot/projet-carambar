@@ -25,10 +25,13 @@ Récupérer toutes les blagues.
   ```json
   [
     {
-        "id": id de la blague,
-        "content": "contenu d'une blague existante"
+      "id": 1,
+      "content": "Voici une blague existante !"
     },
-    etc...
+    {
+      "id": 2,
+      "content": "Une autre blague au hasard !"
+    }
   ]
 
 ### 3. **GET** `/api/blagues/{id}`
@@ -36,8 +39,8 @@ Récupérer une blague par son id.
 - **Response** :
   ```json
   {
-      "id": id de la blague recherchée,
-      "content": "contenu de la blague trouvée si elle existe"
+    "id": 1,
+    "content": "Voici la blague demandée par son ID."
   }
 
 ### 4. **GET** `/api/blagues/random`
@@ -45,6 +48,7 @@ Récupérer une blague aléatoire.
 - **Response** :
   ```json
   {
-      "id": id de la blague,
-      "content": "contenu d'ue blague au hasard"
+    "id": 3,
+    "content": "Blague aléatoire pour égayer ta journée !"
   }
+
