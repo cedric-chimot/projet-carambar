@@ -52,3 +52,7 @@ Récupérer une blague aléatoire.
     "content": "Blague aléatoire pour égayer ta journée !"
   }
 
+### 5. Liens utiles
+
+**[Frontend Repository](https://github.com/cedric-chimot/carambar-front)** : Le lien vers le repository GitHub contenant le code Frontend.
+
