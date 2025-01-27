@@ -51,11 +51,20 @@ public class BlaguesService {
      * @return une blague aléatoire
      */
     public Optional<Blagues> findRandom() {
+        // Récupérer toutes les blagues de la base de données
         List<Blagues> blagues = blaguesRepository.findAll();
+
+        // Vérifier si la liste des blagues n'est pas vide
         if (!blagues.isEmpty()) {
+            // Générer un index aléatoire entre 0 et la taille de la liste
             int randomIndex = (int) (Math.random() * blagues.size());
+
+            // Retourner l'élément de la liste à l'index généré
             return Optional.of(blagues.get(randomIndex));
         }
+
+        // Si la liste est vide, retourner un Optional vide
         return Optional.empty();
     }
+
 }
