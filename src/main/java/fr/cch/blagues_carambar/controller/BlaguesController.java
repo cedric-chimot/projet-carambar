@@ -3,6 +3,7 @@ package fr.cch.blagues_carambar.controller;
 
 import fr.cch.blagues_carambar.entity.Blagues;
 import fr.cch.blagues_carambar.service.BlaguesService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,8 +28,11 @@ public class BlaguesController {
      * @return la nouvelle blague
      */
     @PostMapping("/create")
-    public Blagues ajouterBlague(@RequestBody Blagues blague) {
-        return blaguesService.save(blague);
+    public ResponseEntity<Blagues> saveBlague(@RequestBody Blagues blague) {
+        Blagues blagueSave = blaguesService.save(
+                blague.getContent()
+        );
+        return ResponseEntity.ok(blagueSave);
     }
 
     /**
@@ -56,9 +60,8 @@ public class BlaguesController {
      */
     @GetMapping("/random")
     public ResponseEntity<Blagues> getRandomBlague() {
-        Optional<Blagues> blague = blaguesService.findRandom();
-        return blague.map(ResponseEntity::ok)
-                .orElseGet(() -> ResponseEntity.notFound().build());
+        return blaguesService.findRandom()
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
-
 }

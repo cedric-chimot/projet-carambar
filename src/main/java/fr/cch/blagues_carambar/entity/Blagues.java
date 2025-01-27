@@ -6,9 +6,6 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
-@Getter
-@Setter
-@RequiredArgsConstructor
 @AllArgsConstructor
 @Entity
 @Table(name = "blagues")
@@ -16,17 +13,40 @@ public class Blagues {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_blague")
+    @Column(name = "id")
     private Long id;
 
-    @Column(name = "blague")
-    private String blague;
+    @Column(name = "content")
+    private String content;
+
+    public Blagues(String content) {
+        this.content = content;
+    }
+
+    public Blagues() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
 
     @Override
     public String toString() {
         return "Blagues{" +
                 "id=" + id +
-                ", blague='" + blague + '\'' +
+                ", blague='" + content + '\'' +
                 '}';
     }
 }

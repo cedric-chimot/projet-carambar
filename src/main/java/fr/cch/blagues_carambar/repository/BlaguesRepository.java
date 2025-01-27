@@ -12,7 +12,7 @@ public interface BlaguesRepository extends JpaRepository<Blagues, Long> {
      * Requête pour afficher une blague aléatoirement
      * @return une blague aléatoire
      */
-    @Query(value = "SELECT * FROM blagues ORDER BY RANDOM() LIMIT 1", nativeQuery = true)
+    @Query(value = "SELECT * FROM blagues ORDER BY RAND() LIMIT 1", nativeQuery = true)
     Optional<Blagues> findRandomBlague();
 
 }

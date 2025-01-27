@@ -12,7 +12,6 @@ import java.util.Optional;
 @Transactional
 public class BlaguesService {
 
-
     private final BlaguesRepository blaguesRepository;
 
     public BlaguesService(BlaguesRepository blaguesRepository) {
@@ -21,10 +20,11 @@ public class BlaguesService {
 
     /**
      * Méthode pour ajouter une blague
-     * @param blague la blague à ajouter
+     * @param content la blague à ajouter
      * @return la nouvelle blague
      */
-    public Blagues save(Blagues blague) {
+    public Blagues save(String content) {
+        Blagues blague = new Blagues(content);
         return blaguesRepository.save(blague);
     }
 
@@ -51,6 +51,11 @@ public class BlaguesService {
      * @return une blague aléatoire
      */
     public Optional<Blagues> findRandom() {
-        return blaguesRepository.findRandomBlague();
+        List<Blagues> blagues = blaguesRepository.findAll();
+        if (!blagues.isEmpty()) {
+            int randomIndex = (int) (Math.random() * blagues.size());
+            return Optional.of(blagues.get(randomIndex));
+        }
+        return Optional.empty();
     }
 }
