@@ -12,6 +12,7 @@ import java.util.Optional;
 @Transactional
 public class BlaguesService {
 
+
     private final BlaguesRepository blaguesRepository;
 
     public BlaguesService(BlaguesRepository blaguesRepository) {
